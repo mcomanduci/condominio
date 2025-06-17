@@ -30,7 +30,7 @@ jobs:
               -e "s|__APP_ID__|${{ secrets.FIREBASE_APP_ID }}|g" \
               ./script.js
 
-      - name: Upload artifact'
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./"
