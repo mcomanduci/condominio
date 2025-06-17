@@ -1691,8 +1691,16 @@ window.saveReciboConfig = async () => {
 // --- FIREBASE INITIALIZATION ---
 
 try {
-  const fbConfig = JSON.parse(__FIREBASE_CONFIG__);
-  app = initializeApp(fbConfig);
+  const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyD1Wfs7Rxx_It70-KiObxfiTiiS9Kz5aGI",
+    authDomain: "condominio-84c37.firebaseapp.com",
+    projectId: "condominio-84c37",
+    storageBucket: "condominio-84c37.firebasestorage.app",
+    messagingSenderId: "74015695256",
+    appId: "1:74015695256:web:00fae83dae4f721a444bed",
+  };
+  // const fbConfig = JSON.parse(__FIREBASE_CONFIG__);
+  app = initializeApp(FIREBASE_CONFIG);
   db = getFirestore(app);
   auth = getAuth(app);
   appId = "solares-app-default";

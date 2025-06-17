@@ -17,11 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Inject Firebase Config
-        run: |
-          sed -i "s|__FIREBASE_CONFIG__|${{ secrets.FIREBASE_CONFIG }}|g" ./script.js
-          sed -i '/<script src="config.js"><\/script>/d' ./index.html
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
