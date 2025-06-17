@@ -20,7 +20,7 @@ jobs:
       - name: Inject Secrets
         run: |
           ESCAPED_CONFIG=$(echo '${{ secrets.FIREBASE_CONFIG }}' | jq -Rs .)
-          sed -i "s|\"__FIREBASE_CONFIG__\"|$ESCAPED_CONFIG|g" script.js
+          sed -i "s|__FIREBASE_CONFIG__|$ESCAPED_CONFIG|g" script.js
           sed -i '/<script src="config.js"><\/script>/d' index.html
 
       - name: Setup Pages
