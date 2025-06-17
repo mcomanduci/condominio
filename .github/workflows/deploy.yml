@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Roda quando um push é feito para a branch `main`
+  push:
+    branches:
+      - main
+  # Permite rodar manualmente pela aba Actions
+  workflow_dispatch:
+
+# Define as permissões para a Action
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Baixa o código do seu repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Injeta os segredos no index.html
+      - name: Inject Secrets
+        run: |
+          # Substitui o placeholder do Firebase com o segredo
+          sed -i "s|'__FIREBASE_CONFIG__'|'${{ secrets.FIREBASE_CONFIG }}'|g" index.html
+
+          # Remove a linha de script do config.js, que era só para teste local
+          sed -i "/<script src=\"config.js\"><\/script>/d" index.html
+
+      # 3. Configura o GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 4. Constrói o artefato para o site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      # 5. Publica o site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

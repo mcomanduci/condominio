@@ -1,0 +1,56 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+.view {
+  display: none;
+}
+.main-menu-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.main-menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.modal {
+  display: none;
+  transition: opacity 0.3s ease;
+}
+.modal-content {
+  max-width: 650px;
+}
+.print-modal-content {
+  max-width: 800px;
+}
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+#signature-pad {
+  border: 2px dashed #ccc;
+  border-radius: 0.5rem;
+  cursor: crosshair;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print-area,
+  #print-area * {
+    visibility: visible;
+  }
+  #print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
