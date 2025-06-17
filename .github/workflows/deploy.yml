@@ -19,10 +19,8 @@ jobs:
 
       - name: Inject Firebase Config
         run: |
-          CLEANED_CONFIG=$(echo '${{ secrets.FIREBASE_CONFIG }}' | tr -d '\n\r ')
-          ESCAPED_CONFIG=$(echo "$CLEANED_CONFIG" | jq -Rs .)
-          sed -i "s|__FIREBASE_CONFIG__|$ESCAPED_CONFIG|g" script.js
-          sed -i '/<script src="config.js"><\/script>/d' index.html
+          sed -i "s|__FIREBASE_CONFIG__|${{ secrets.FIREBASE_CONFIG }}|g" ./script.js
+          sed -i '/<script src="config.js"><\/script>/d' ./index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
