@@ -19,11 +19,8 @@ jobs:
 
       - name: Inject Firebase Config
         run: |
-          echo "Firebase config secret:"
-          echo '${{ secrets.FIREBASE_CONFIG }}'
-          ESCAPED_CONFIG=$(echo '${{ secrets.FIREBASE_CONFIG }}' | jq -Rs .)
-          echo "Escaped config:"
-          echo "$ESCAPED_CONFIG"
+          CLEANED_CONFIG=$(echo '${{ secrets.FIREBASE_CONFIG }}' | tr -d '\n\r ')
+          ESCAPED_CONFIG=$(echo "$CLEANED_CONFIG" | jq -Rs .)
           sed -i "s|__FIREBASE_CONFIG__|$ESCAPED_CONFIG|g" script.js
           sed -i '/<script src="config.js"><\/script>/d' index.html
 
