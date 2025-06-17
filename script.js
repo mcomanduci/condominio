@@ -1691,8 +1691,8 @@ window.saveReciboConfig = async () => {
 // --- FIREBASE INITIALIZATION ---
 
 try {
-  // const fbConfig = JSON.parse("__FIREBASE_CONFIG__");
-  const fbConfig = FIREBASE_CONFIG;
+  const fbConfig = JSON.parse("__FIREBASE_CONFIG__");
+  // const fbConfig = FIREBASE_CONFIG;
   app = initializeApp(fbConfig);
   db = getFirestore(app);
   auth = getAuth(app);
