@@ -1692,12 +1692,12 @@ window.saveReciboConfig = async () => {
 
 try {
   const fbConfig = {
-    apiKey: __FIREBASE_API_KEY__,
-    authDomain: __FIREBASE_AUTH_DOMAIN__,
-    projectId: __FIREBASE_PROJECT_ID__,
-    storageBucket: __FIREBASE_STORAGE_BUCKET__,
-    messagingSenderId: __FIREBASE_MESSAGING_SENDER_ID__,
-    appId: __FIREBASE_APP_ID__,
+    apiKey: __API_KEY__,
+    authDomain: __AUTH_DOMAIN__,
+    projectId: __PROJECT_ID__,
+    storageBucket: __STORAGE_BUCKET__,
+    messagingSenderId: __MESSAGING_SENDER_ID__,
+    appId: __APP_ID__,
   };
 
   app = initializeApp(fbConfig);
