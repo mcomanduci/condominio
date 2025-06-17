@@ -23,6 +23,9 @@ jobs:
           sed -i "s|__FIREBASE_CONFIG__|$ESCAPED_CONFIG|g" script.js
           sed -i '/<script src="config.js"><\/script>/d' index.html
 
+      - name: Print escaped config (debug)
+        run: echo "$ESCAPED_CONFIG"
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
